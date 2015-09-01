@@ -99,6 +99,13 @@ function scb(access) {
             };
         } else {
             midiout=outputs[port];
+            midiout2 = outputs[1];
+            // console.log("port number");
+            // console.log(port);
+            //IAC Driver Bus 1 : 0
+            //UM-1 : 1
+            console.log(midiout.name);
+            console.log(midiout2.name);
             if(midiout.name.match(/NSX\-39/)) {
                 fireEvent("mousedown", "#midiin1");
             }
@@ -123,6 +130,7 @@ function scb(access) {
         });
 
         smfPlayer=new SmfPlayer(midiout);
+        smfPlayer2=new SmfPlayer(midiout2); //Dual instance for multiple output
         smfPlayer.changeUiStop=function() {
             document.getElementById("midistartB").className="glyphicon glyphicon-play";
         };
